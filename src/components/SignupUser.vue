@@ -19,6 +19,15 @@
           <label for="password">Password:</label>
           <input type="password" id="password" v-model="password" required />
         </div>
+        <div class="form-group">
+          <label for="userType">I am signing up as:</label>
+          <select id="userType" v-model="userType" required>
+            <option disabled value="">Select user type</option>
+            <option value="business">Business or Organization</option>
+            <option value="individual">Private Family or Individual</option>
+            <option value="jobseeker">Jobseeker</option>
+          </select>
+        </div>
         <button type="submit" class="signup-button">Create Account</button>
       </form>
       <div class="account-info">
@@ -69,7 +78,8 @@ label {
   margin-bottom: 0.5rem; /* Space below label */
 }
 
-input {
+input,
+select { /* Add select styles */
   width: 100%; /* Full width for input fields */
   padding: 0.5rem; /* Padding inside input */
   border: 1px solid #ccc; /* Border color */
@@ -105,7 +115,8 @@ export default {
     return {
       name: '',
       email: '',
-      password: ''
+      password: '',
+      userType: '' // Data property for the user type dropdown
     };
   },
   methods: {
@@ -115,6 +126,7 @@ export default {
       console.log('Name:', this.name);
       console.log('Email:', this.email);
       console.log('Password:', this.password);
+      console.log('User Type:', this.userType); // Log user type
       
       // After successful sign-up, redirect the user to the desired page
       // this.$router.push('/desired-path');
