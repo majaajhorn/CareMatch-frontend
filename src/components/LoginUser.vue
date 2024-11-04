@@ -14,6 +14,8 @@
           <img src="@/assets/jobseeker-icon.png" alt="Jobseeker Icon" />
           <h3>I'm a jobseeker</h3>
           <button class="login-button">Login</button>
+          <p class="spacing">Don't have an account?</p>
+          <router-link to="/signup" class="link-text">Join free today!</router-link>
         </div>
 
         <!-- Employer Container -->
@@ -21,6 +23,8 @@
           <img src="@/assets/employer-icon.png" alt="Employer Icon" />
           <h3>I'm an employer</h3>
           <button class="login-button">Login</button>
+          <p class="spacing">Need an account?</p>
+          <router-link to="/signup" class="link-text">Sign up now!</router-link>
         </div>
       </div>
     </div>
@@ -74,10 +78,29 @@
   background-color: #8c75e6; /* Background color */
   color: white; /* Text color */
   border: none; /* Remove default border */
-  padding: 0.5rem 1rem; /* Padding for the button */
+  padding: 0.75rem 1.5rem; /* Increase padding for a larger button */
   border-radius: 5px; /* Rounded corners */
   cursor: pointer; /* Pointer cursor on hover */
-  margin-top: 1rem; /* Space above button */
+  margin-top: 2rem; /* Increase space above button */
+  font-size: 1rem; /* Button font size */
+}
+
+/* Additional spacing for paragraphs */
+.spacing {
+  margin-top: 1rem; /* Add margin for spacing below the button */
+  font-size: 0.9rem; /* Reduce font size */
+}
+
+/* Link styles */
+.link-text {
+  color: #8c75e6; /* Purple color */
+  cursor: pointer; /* Pointer cursor on hover */
+  text-decoration: none; /* No underline */
+  font-size: 0.9rem; /* Reduce font size */
+}
+
+.link-text:hover {
+  text-decoration: underline; /* Underline on hover for better UX */
 }
 </style>
 
