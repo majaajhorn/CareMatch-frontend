@@ -13,7 +13,9 @@
         <div class="container jobseeker">
           <img src="@/assets/jobseeker-icon.png" alt="Jobseeker Icon" />
           <h3>I'm a jobseeker</h3>
-          <button class="login-button">Login</button>
+          <router-link to="/logging-in/jobseeker">
+            <button class="login-button">Login</button>
+          </router-link>
           <p class="spacing">Don't have an account?</p>
           <router-link to="/signup" class="link-text">Join free today!</router-link>
         </div>
@@ -22,7 +24,9 @@
         <div class="container employer">
           <img src="@/assets/employer-icon.png" alt="Employer Icon" />
           <h3>I'm an employer</h3>
-          <button class="login-button">Login</button>
+          <router-link to="/logging-in/employer">
+            <button class="login-button">Login</button>
+          </router-link>
           <p class="spacing">Need an account?</p>
           <router-link to="/signup" class="link-text">Sign up now!</router-link>
         </div>
