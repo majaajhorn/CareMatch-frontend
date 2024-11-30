@@ -109,27 +109,61 @@ select { /* Add select styles */
 </style>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'SignupUser',
   data() {
     return {
+      selectedUserType: '',
       name: '',
       email: '',
       password: '',
-      userType: '' // Data property for the user type dropdown
+      employerType: ''
     };
   },
   methods: {
-    handleSignup() {
-      // Implement your sign-up logic here
-      // For example, you can send a request to your backend server to create the new user account
-      console.log('Name:', this.name);
-      console.log('Email:', this.email);
-      console.log('Password:', this.password);
-      console.log('User Type:', this.userType); // Log user type
-      
-      // After successful sign-up, redirect the user to the desired page
-      // this.$router.push('/desired-path');
+    selectUserType(type) {
+      this.selectedUserType = type;
+    },
+    async handleSignup() {
+      try {
+        // Determine the user type to send to the backend
+        const userType =
+          this.selectedUserType === 'employer'
+            ? this.employerType
+            : 'jobseeker';
+        
+        if (!userType) {
+          alert('Please select a user type.');
+          return;
+        }
+
+        // Make an async POST request
+        const response = await axios.post('http://localhost:5000/signup', {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+          userType
+        });
+
+        // Show a success message
+        alert(response.data.message);
+
+        // Clear form fields after successful signup
+        this.name = '';
+        this.email = '';
+        this.password = '';
+        this.employerType = '';
+        this.selectedUserType = '';
+      } catch (error) {
+        // Handle error response
+        if (error.response && error.response.data.message) {
+          alert(error.response.data.message); // Backend-provided error message
+        } else {
+          alert('Something went wrong. Please try again.'); // Generic error message
+        }
+      }
     }
   }
 };
